@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,8 @@ Route::get('/clients', [App\Http\Controllers\ClientController::class, 'index'])-
 Route::get('/clients/create', [App\Http\Controllers\ClientController::class, 'create'])->name('clients.create');
 Route::post('/clients', [App\Http\Controllers\ClientController::class, 'store']);
 
+Route::delete('/clients/{id}', [App\Http\Controllers\ClientController::class, 'destroy']);
+Route::get('/clients/{id}/edit', [App\Http\Controllers\ClientController::class, 'edit']);
+Route::put('/clients/{id}', [App\Http\Controllers\ClientController::class, 'update']);
+
+Route::resource('cars', CarController::class);

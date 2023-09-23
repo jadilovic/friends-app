@@ -19,6 +19,11 @@ return new class extends Migration
             $table->string('phone', 15);
             $table->timestamps();
         });
+
+        Schema::table('clients', function($table)
+        {
+            $table->string('first_name', 50)->nullable()->change();
+        });
     }
 
     /**

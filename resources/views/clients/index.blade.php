@@ -13,6 +13,8 @@
                         <th scope="col">Last name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone</th>
+                         <th scope="col">City</th>
+                        <th scope="col">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -23,6 +25,15 @@
                         <td>{{ $client->last_name }}</td>
                         <td>{{ $client->email }}</td>
                         <td>{{ $client->phone }}</td>
+                        <td>{{ $client->city }}</td>
+                        <td>
+                            <a href="/clients/{{$client->id}}/edit" class="btn btn-info">EDIT</a>
+                            <form method="POST" action="/clients/{{$client->id}}" style="display: inline">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <input type="submit" class="btn btn-danger" value="Delete">
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                     </tbody>

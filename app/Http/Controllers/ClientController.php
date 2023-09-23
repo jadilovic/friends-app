@@ -30,8 +30,38 @@ class ClientController extends Controller
         $client->last_name = $request->last_name;
         $client->email = $request->email;
         $client->phone = $request->phone;
+        $client->city = $request->city;
         $client->save();
 
+        return redirect('clients');
+    }
+
+    public function edit($id){
+
+        $client = Client::find($id);
+
+        $data = [
+            'client' => $client,
+        ];
+
+        return view('clients.edit', $data);
+    }
+
+    public function update(Request $request, $id){
+        $client = Client::find($id);
+        $client->first_name = $request->first_name;
+        $client->last_name = $request->last_name;
+        $client->email = $request->email;
+        $client->phone = $request->phone;
+        $client->city = $request->city;
+        $client->save();
+
+        return redirect('clients');
+    }
+
+    public function destroy($id){
+        $client = Client::find($id);
+        $client->delete();
         return redirect('clients');
     }
 }
