@@ -35,3 +35,5 @@ Route::get('/clients/{id}/edit', [App\Http\Controllers\ClientController::class, 
 Route::put('/clients/{id}', [App\Http\Controllers\ClientController::class, 'update']);
 
 Route::resource('cars', CarController::class);
+
+Route::get('/cars/index-client/{id}', [CarController::class, 'indexClient']);
