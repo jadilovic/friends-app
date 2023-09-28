@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('year', 10)->nullable();
             $table->tinyInteger('warranty')->default(0);
             $table->unsignedBigInteger('client_id');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->timestamps();
         });
     }
