@@ -3,27 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Car;
-use App\Models\Client;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
-class CarController extends Controller
+class UserController extends Controller
 {
     public function __construct()
-        {
-            $this->middleware('auth');
-        }
-
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $cars = Car::all();
+        $users = User::all();
+
         $data = [
-            'cars' => $cars,
+            'users' => $users,
         ];
 
-        return view('cars.index', $data);
+        return view('users.index', $data);
     }
 
     /**
@@ -31,11 +31,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        $clients = Client::all();
-        $data = [
-            'clients' => $clients,
-        ];
-        return view('cars.create', $data);
+        return view('users.create');
     }
 
     /**
@@ -43,15 +39,15 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        $car = new Car;
-        $car->manufacturer = $request->manufacturer;
-        $car->model = $request->model;
-        $car->year = $request->year;
-        $car->warranty = $request->warranty;
-        $car->client_id = $request->client_id;
-        $car->save();
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role = $request->role;
+        $user->active = $request->active;
+        $user->password = Hash::make($request->password);
+        $user->save();
 
-        return redirect('cars');
+        return redirect('users');
     }
 
     /**
@@ -84,18 +80,5 @@ class CarController extends Controller
     public function destroy(string $id)
     {
         //
-    }
-
-    public function indexClient($id)
-    {
-        $client = Client::find($id);
-        $cars = $client->cars;
-
-        $data = [
-            'client' => $client,
-            'cars' => $cars,
-        ];
-
-        return view('cars.index', $data);
     }
 }

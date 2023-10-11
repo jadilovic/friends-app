@@ -7,6 +7,11 @@ use App\Models\Client;
 
 class ClientController extends Controller
 {
+    public function __construct()
+        {
+            $this->middleware('auth')->except(['create', 'store']);
+        }
+
     public function index(){
 
         $clients = Client::all();

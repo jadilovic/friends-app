@@ -37,3 +37,8 @@ Route::put('/clients/{id}', [App\Http\Controllers\ClientController::class, 'upda
 Route::resource('cars', CarController::class);
 
 Route::get('/cars/index-client/{id}', [CarController::class, 'indexClient']);
+
+Route::resource('users', App\Http\Controllers\UserController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

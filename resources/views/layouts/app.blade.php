@@ -36,12 +36,17 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('about') }}">{{ __('About') }}</a>
                         </li>
+                        @auth
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('clients') }}">{{ __('Clients') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('cars.index') }}">{{ __('Cars') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/users">Users</a>
+                        </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
