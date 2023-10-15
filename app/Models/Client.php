@@ -14,4 +14,9 @@ class Client extends Model
     {
         return $this->hasMany(Car::class);
     }
+
+    public function appointments()
+    {
+        return $this->hasMany('App\Models\Appointment');
+    }
 }

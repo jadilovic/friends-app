@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,6 @@ Route::resource('users', App\Http\Controllers\UserController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/appointments/create/{client_id}', [App\Http\Controllers\AppointmentController::class, 'create']);
+Route::resource('appointments', App\Http\Controllers\AppointmentController::class);

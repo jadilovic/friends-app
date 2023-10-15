@@ -14,4 +14,9 @@ class Car extends Model
     {
         return $this->belongsTo(Client::class);
     }
+
+    public function appointments()
+    {
+        return $this->hasMany('App\Models\Appointment');
+    }
 }
