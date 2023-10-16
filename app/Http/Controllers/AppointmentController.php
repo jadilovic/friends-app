@@ -7,6 +7,7 @@ use App\Models\Appointment;
 use App\Models\Client;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Carbon\Carbon;
 
 class AppointmentController extends Controller
 {
@@ -16,7 +17,7 @@ class AppointmentController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $appointments = null;
+        $appointments = array();
 
         if($user->role == 'Admin') {
             $appointments = Appointment::all();
