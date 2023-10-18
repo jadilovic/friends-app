@@ -17,10 +17,11 @@ class AppointmentController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $appointments = array();
+        // $appointments = array();
 
         if($user->role == 'Admin') {
-            $appointments = Appointment::all();
+           // $appointments = Appointment::all();
+            $appointments = Appointment::with(["car", "client", "user"])->get();
         }
 
         if($user->role == 'Mechanic') {
@@ -30,6 +31,8 @@ class AppointmentController extends Controller
         $data = [
             'appointments' => $appointments,
         ];
+
+        // return $appointments;
 
         return view('appointments.index', $data);
     }
