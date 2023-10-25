@@ -9,14 +9,23 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Manufacturer</label>
                         <input class="form-control" name="manufacturer">
+                        @error('manufacturer')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Model</label>
                         <input class="form-control" name="model">
+                        @error('model')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror 
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Year</label>
                         <input class="form-control" name="year">
+                        @error('year')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror 
                     </div>
                     <div class="form-group">
                         <label for="warranty">Warranty</label>

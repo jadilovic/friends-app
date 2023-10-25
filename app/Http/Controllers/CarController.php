@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Client;
+use Validator;
+use Illuminate\Support\Facades\Auth;
 
 class CarController extends Controller
 {
@@ -43,6 +45,19 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
+         $user = Auth::user();
+
+        if($user->role != 'Admin') {
+           return view(view: "not-allowed");
+        }
+
+        $validatedData = $request->validate([
+            'manufacturer' => ['required', 'string', 'max:50'],
+            'year' => ['required', 'string', 'max:10'],
+            'model' => ['required', 'string', 'max:100'],
+            'warranty' => ['integer', 'min:0', 'max:1'],
+        ]);
+
         $car = new Car;
         $car->manufacturer = $request->manufacturer;
         $car->model = $request->model;
