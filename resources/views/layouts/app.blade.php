@@ -31,6 +31,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
+                            <a class="nav-link" href="/home/365">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('privacy') }}">{{ __('Privacy') }}</a>
                         </li>
                         <li class="nav-item">

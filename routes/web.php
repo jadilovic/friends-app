@@ -25,7 +25,8 @@ Route::get('/about', [App\Http\Controllers\PageController::class, 'index'])->nam
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home/{days}', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/clients', [App\Http\Controllers\ClientController::class, 'index'])->name('clients');
 Route::get('/clients/create', [App\Http\Controllers\ClientController::class, 'create'])->name('clients.create');
